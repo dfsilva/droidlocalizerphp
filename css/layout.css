@@ -1,0 +1,24 @@
+.col1,.col2,.col3,.cols {
+	float: left
+}
+
+.col1 {
+	width: 260px
+}
+
+.col2 {
+	width: 500px
+}
+
+.cols {
+	width: 200px
+}
+
+#page5 .cols {
+	width: 80px
+}
+
+.width_100perc {
+	width: 100%;
+}
+
