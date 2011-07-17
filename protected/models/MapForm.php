@@ -20,7 +20,7 @@ class MapForm extends CFormModel
 	public function rules()
 	{
 		return array(
-		array('initialDate, finalDate', 'date'),
+			array('initialDate, finalDate', 'date', 'format' => 'dd/MM/yyyy', 'enableClientValidation'=> true, 'allowEmpty'=>false),
 		);
 	}
 

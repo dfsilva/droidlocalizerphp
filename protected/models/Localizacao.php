@@ -42,7 +42,7 @@ class Localizacao extends CActiveRecord
 		return array(
 		array('longitude, latitude, id_usuario', 'required'),
 		array('id_usuario', 'numerical', 'integerOnly'=>true),
-		array('longitude, latitude', 'length', 'max'=>11),
+		array('longitude, latitude', 'length', 'max'=>20),
 		// The following rule is used by search().
 		// Please remove those attributes that should not be searched.
 		array('id_localizacao, longitude, latitude, id_usuario', 'safe', 'on'=>'search'),
@@ -96,16 +96,19 @@ class Localizacao extends CActiveRecord
 		));
 	}
 
-	public function findByIdUsuario($idUsuario){
+	public function findByIdUsuarioAndDate($idUsuario, $dataInicial, $dataFinal){
+		$dataIni = Yii::app()->dateFormatter->format('yyyy-MM-dd', CDateTimeParser::parse($dataInicial,'dd/MM/yyyy'));
+		$dataFin = Yii::app()->dateFormatter->format('yyyy-MM-dd', CDateTimeParser::parse($dataFinal,'dd/MM/yyyy'));
 		return Yii::app()->db->createCommand()
-		->select('longitudeee, latitude')
+		->select('longitude, latitude')
 		->from($this->tableName())
-		->where('id_usuario=:id', array(':id'=> $idUsuario ? $idUsuario : Yii::app()->user->id))
+		->where('id_usuario=:id and hora >= :dataInicial and hora <= :dataFinal',
+		array(':id'=> $idUsuario ? $idUsuario : Yii::app()->user->id, ':dataInicial'=> $dataIni, ':dataFinal'=> $dataFin))
 		->queryAll();
 	}
-	
+
 	public function beforeSave() {
-	    $this->hora = new CDbExpression('NOW()');
-	    return parent::beforeSave();
+		$this->hora = new CDbExpression('NOW()');
+		return parent::beforeSave();
 	}
 }

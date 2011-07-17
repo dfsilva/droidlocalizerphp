@@ -27,27 +27,6 @@ class SiteController extends Controller {
 		$this->render('index', array('model' => $model));
 	}
 
-	public function actionBuscarMapa(){
-		try {
-			if(Yii::app()->request->isAjaxRequest){
-				$model = new MapForm;
-
-				$localizacoes = Localizacao::model()->findByIdUsuario(Yii::app()->user->id);
-
-				$coord = json_encode($localizacoes);
-				$this->renderPartial('mapa',array('model'=>$model, 'coord'=>$coord), false,true);
-			}
-		}catch(Exception $e) {
-			//throw new CHttpException(404,'The specified post cannot be found.');
-			//throw new CHttpException(500, $e->getMessage());
-			//echo $e->getMessage();
-			Yii::app()->user->setFlash('info', Yii::t('mess', $e->getMessage()));
-			$this->renderPartial('mapa',array('model'=>$model, 'coord'=>$coord), false,true);
-			//$this->renderPartial('mapa',array('model'=>$model, 'coord'=>$coord), false,true);
-		}
-
-	}
-
 	public function actionAbout() {
 		Yii::app()->session['menu'] = 2;
 		$this->render('about');
@@ -99,7 +78,7 @@ class SiteController extends Controller {
 		Yii::app()->session['menu'] = 4;
 		$this->render('login', array('model' => $model));
 	}
-
+	
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
@@ -109,7 +88,7 @@ class SiteController extends Controller {
 	}
 
 	/**
-	 * Exibir a página de cadastro de usuário.
+	 * Exibir a pagina de cadastro de usuario.
 	 */
 	public function actionCadastro() {
 
@@ -131,7 +110,7 @@ class SiteController extends Controller {
 	}
 
 	/**
-	 * Exibir a página para recuperar a senha do usuário.
+	 * Exibir a pagina para recuperar a senha do usuario.
 	 */
 	public function actionRecuperar() {
 		$model = new RecoveryForm();

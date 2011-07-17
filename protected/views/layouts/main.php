@@ -13,13 +13,13 @@ $cs->registerCssFile(Yii::app()->baseUrl . '/css/layout.css');
 $cs->registerCssFile(Yii::app()->baseUrl . '/css/style.css');
 $cs->registerCssFile(Yii::app()->baseUrl . '/css/form.css');
 
+$cs->registerCoreScript('jquery');
+$cs->registerCoreScript('jquery.ui');
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/cufon-yui.js', CClientScript::POS_HEAD);
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/cufon-replace.js', CClientScript::POS_HEAD);
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/Avenir_900.font.js', CClientScript::POS_HEAD);
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/Avenir_300.font.js', CClientScript::POS_HEAD);
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/Avenir_500.font.js', CClientScript::POS_HEAD);
-
-$cs->registerCoreScript('jquery');
 ?>
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script>
@@ -80,9 +80,8 @@ $cs->registerCoreScript('jquery');
 			</div>
 			
 			<div class="text">
-				<h1>Fique tranquilo! <span>Seu Android está seguro.</span></h1>
+				<h1>Fique tranquilo! <span>Seu Android est&aacute; seguro.</span></h1>
 			</div>
-			
 		</div>
 	</header>
 	<section id="content">
@@ -110,6 +109,5 @@ $cs->registerCoreScript('jquery');
 		</div>
 	</footer>
 </div>
-<script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>

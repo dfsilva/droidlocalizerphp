@@ -391,3 +391,15 @@ div.breadcrumbs span {
     background-image: url(../images/error.png);
 }
 /*error messages*/
+
+.ui-widget {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 0.8em !important;
+}
+.ui-widget .ui-widget {
+    font-size: 0.8em !important;
+}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 0.8em !important;
+}

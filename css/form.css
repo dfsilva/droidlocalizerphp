@@ -1,6 +1,17 @@
-div.form select, div.form input[type=text], div.form input[type=password] {
+div.form select,div.form input[type=text],div.form input[type=password]
+	{
 	float: right;
 	width: 350px;
+	height: 16px;
+	border: 1px solid #373737;
+	background: none;
+	padding: 3px 5px;
+	margin-bottom: 6px;
+	color: #808081;
+	font: 14px Arial, Helvetica, sans-serif
+}
+
+div.form_2 input[type=text] {
 	height: 16px;
 	border: 1px solid #373737;
 	background: none;
