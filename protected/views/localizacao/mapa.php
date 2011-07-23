@@ -1,12 +1,3 @@
-            <?php if(Yii::app()->user->hasFlash('info')): ?>
-               <div class="info_msg">
-                 <?php echo Yii::app()->user->getFlash('info'); ?>
-               </div>
-            <?php elseif(Yii::app()->user->hasFlash('error')): ?>
-               <div class="error_msg">
-                 <?php echo Yii::app()->user->getFlash('error'); ?>
-               </div>
-            <?php endif; ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
 <script type="text/javascript">
