@@ -12,6 +12,7 @@ $cs->registerCssFile(Yii::app()->baseUrl . '/css/reset.css');
 $cs->registerCssFile(Yii::app()->baseUrl . '/css/layout.css');
 $cs->registerCssFile(Yii::app()->baseUrl . '/css/style.css');
 $cs->registerCssFile(Yii::app()->baseUrl . '/css/form.css');
+$cs->registerCssFile(Yii::app()->baseUrl . '/css/jquery.loadmask.css');
 
 $cs->registerCoreScript('jquery');
 $cs->registerCoreScript('jquery.ui');
@@ -20,7 +21,9 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/js/cufon-replace.js', CClientScr
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/Avenir_900.font.js', CClientScript::POS_HEAD);
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/Avenir_300.font.js', CClientScript::POS_HEAD);
 $cs->registerScriptFile(Yii::app()->baseUrl . '/js/Avenir_500.font.js', CClientScript::POS_HEAD);
+$cs->registerScriptFile(Yii::app()->baseUrl . '/js/jquery.loadmask.js', CClientScript::POS_HEAD);
 ?>
+
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/html5.js"></script>
@@ -86,15 +89,14 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/js/Avenir_500.font.js', CClientS
 	</header>
 	<section id="content">
 		<div class="wrapper" id="divContent">
-            <?php if(Yii::app()->user->hasFlash('info')): ?>
-               <div class="info_msg">
-                 <?php echo Yii::app()->user->getFlash('info'); ?>
-               </div>
-            <?php elseif(Yii::app()->user->hasFlash('error')): ?>
-               <div class="error_msg">
-                 <?php echo Yii::app()->user->getFlash('error'); ?>
-               </div>
-            <?php endif; ?>
+			
+			<div class="info_msg" style="display: <?=Yii::app()->user->hasFlash('info') ? '' : 'none'?>;">
+			  <?php echo Yii::app()->user->getFlash('info'); ?>
+		    </div>
+		    
+		    <div class="error_msg" style="display: <?=Yii::app()->user->hasFlash('error') ? '' : 'none'?>;">
+		       <?php echo Yii::app()->user->getFlash('error'); ?>
+		    </div>
 			
             <article class="col1 pad_left1">
 			</article>

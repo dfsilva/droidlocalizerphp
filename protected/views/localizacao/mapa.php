@@ -1,52 +1,67 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-
-
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . '/js/markerwithlabel.js'?>"></script>
 <script type="text/javascript">
-  function initialize() {
-	 var coo = <?= isset($coord) ? $coord : '[]'?>;
-
-	 if(coo != ''){
-		 var corr = new Array();
-
-		jQuery.each(coo, function(i, obj){
-		  corr[i] = new google.maps.LatLng(obj.latitude, obj.longitude);
-		});
-
-		var myOptions = {
-	      zoom: 10,
-	      center: corr[0],
-	      mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-
-	    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-	    jQuery.each(corr, function(i, obj){
-		    var marker = new google.maps.Marker({
-		    	position: obj,
-		    	map: map,
-		    	icon: i == (corr.length-1) ? '' : '<?=Yii::app()->baseUrl?>/images/mapmarker.png',
-		    	title: i == (corr.length-1) ? "Ultima posicao" : "Posicao - "+(i+1)
-		    }); 
-		});
-		
-		tracado = new google.maps.Polyline({
-			path: corr,
-			strokeColor: "#FF0000",
-			strokeOpacity: 0.8,
-			strokeWeight: 2,
-			map : map
-		});
-	  }else{
-	  	 var c = new google.maps.LatLng(-15.707663,-48.039552);
+  
+  function criarMapa(){
+	  var c = new google.maps.LatLng(-15.707663,-48.039552);
 		 var myOptions = {
 			      zoom: 4,
 			      center: c,
 			      mapTypeId: google.maps.MapTypeId.ROADMAP
 			    };
-	     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	  }
+	 var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  }
 
-}
+  function popularMapa(coordenadas) {
+		 var coo = coordenadas;
+
+		 if(coo != ''){
+			 var corr = new Array();
+
+			jQuery.each(coo, function(i, obj){
+			  corr[i] = new google.maps.LatLng(obj.latitude, obj.longitude);
+			});
+
+			var myOptions = {
+		      zoom: 10,
+		      center: corr[0],
+		      mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+		    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+		    jQuery.each(corr, function(i, obj){
+			    var marker = new MarkerWithLabel({
+			    	position: obj,
+			    	map: map,
+			    	labelContent: (corr.length-1) == i ? "Ultima posicao - "+coo[i].hora : "Posicao - "+(i+1)+" "+coo[i].hora,
+			    	labelClass: "labels"
+			    }); 
+			});
+			
+			tracado = new google.maps.Polyline({
+				path: corr,
+				strokeColor: "#FF0000",
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				map : map
+			});
+		  }
+	 }
+  
+  function preConsulta(){
+	  $("#div_mapa").mask("Buscando valores, aguarde...");
+  }
+
+  function posConsulta(data, result){
+	  if(!data.success){
+		$(".error_msg").text(data.error);
+		$(".error_msg").show();
+	  }else{
+		 popularMapa(data.localizacoes);
+	  }
+	  $("#div_mapa").unmask();
+  }
 </script>
 	<h2><?php echo Yii::t('mess','Map')?></h2>
 		<?php $form=$this->beginWidget('CActiveForm', array(
@@ -89,16 +104,16 @@
 			 <?= CHtml::ajaxLink(
 	                   Yii::t('mess','Send'),
 	                   Yii::app()->createUrl("localizacao/buscarMapa"),
-	                   array("update" => "#div_mapa","type"=>"POST"),
+	                   array("success" => "posConsulta","beforeSend"=>"preConsulta","type"=>"POST"),
 	                   array("href" => Yii::app()->createUrl("site/buscarMapa"),
-	                   		"class" =>"button_form") 
+	                   	"class" =>"button_form") 
 	                   );
-				 ?>
+			 ?>
         </div>
 	<?php $this->endWidget(); ?>
 
 	<div id="map_canvas" style="width:90%; height:400px; margin-left: 45px;"></div>
- 
+	
 	<script type="text/javascript">
-		initialize();
+		criarMapa();
 	</script>

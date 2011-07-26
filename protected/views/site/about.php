@@ -6,4 +6,4 @@ $this->breadcrumbs=array(
 ?>
 
 <h2><?=Yii::t('mess','About')?></h2>
-<p>Droid Localizer é uma aplicacao que permite ao usuário encontrar seu Android onde quer que ele esteja.</p>
+<p>Droid Localizer &eacute; uma aplica&ccedil;&atilde;o que permite ao usu&aacute;rio encontrar seu Android onde quer que ele esteja.</p>

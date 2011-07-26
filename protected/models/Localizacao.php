@@ -100,7 +100,7 @@ class Localizacao extends CActiveRecord
 		$dataIni = Yii::app()->dateFormatter->format('yyyy-MM-dd', CDateTimeParser::parse($dataInicial,'dd/MM/yyyy'));
 		$dataFin = Yii::app()->dateFormatter->format('yyyy-MM-dd', CDateTimeParser::parse($dataFinal,'dd/MM/yyyy'));
 		return Yii::app()->db->createCommand()
-		->select('longitude, latitude')
+		->select('longitude, latitude, hora')
 		->from($this->tableName())
 		->where('id_usuario=:id and hora >= :dataInicial and hora <= :dataFinal',
 		array(':id'=> $idUsuario ? $idUsuario : Yii::app()->user->id, ':dataInicial'=> $dataIni, ':dataFinal'=> $dataFin))
