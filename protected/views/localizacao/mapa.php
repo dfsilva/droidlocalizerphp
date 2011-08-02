@@ -34,6 +34,7 @@
 			    var marker = new MarkerWithLabel({
 			    	position: obj,
 			    	map: map,
+			    	icon: (corr.length-1) == i ? null : 'images/mapmarker.png',
 			    	labelContent: (corr.length-1) == i ? "Ultima posicao - "+coo[i].hora : "Posicao - "+(i+1)+" "+coo[i].hora,
 			    	labelClass: "labels"
 			    }); 
@@ -42,8 +43,8 @@
 			tracado = new google.maps.Polyline({
 				path: corr,
 				strokeColor: "#FF0000",
-				strokeOpacity: 0.8,
-				strokeWeight: 2,
+				//strokeOpacity: 0.8,
+				strokeWeight: 1,
 				map : map
 			});
 		  }

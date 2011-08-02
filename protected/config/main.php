@@ -60,14 +60,15 @@ return array(
 		),
 		
 		//producao
-		/*'db'=>array(
+/*
+		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=diegosil_localizer',
 			'emulatePrepare' => true,
 			'username' => 'diegosil_diego',
 			'password' => 'SD@mtzadM',
 			'charset' => 'utf8',
-		),*/
-		
+		),
+		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',

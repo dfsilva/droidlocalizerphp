@@ -106,6 +106,16 @@ class Localizacao extends CActiveRecord
 		array(':id'=> $idUsuario ? $idUsuario : Yii::app()->user->id, ':dataInicial'=> $dataIni, ':dataFinal'=> $dataFin))
 		->queryAll();
 	}
+	
+	public function findLasUpdateByUser($idUsuario){
+		return Yii::app()->db->createCommand()
+		->select('id_localizacao, longitude, latitude, hora')
+		->from($this->tableName())
+		->where('id_usuario=:id', array(':id'=> $idUsuario ? $idUsuario : Yii::app()->user->id))
+		->order(array('hora desc'))
+		->limit(1)
+		->queryAll();
+	}
 
 	public function beforeSave() {
 		$this->hora = new CDbExpression('NOW()');
