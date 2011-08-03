@@ -25,4 +25,7 @@
 ,'Message'=>'Mensagem'
 ,'Initial Date'=>'Data Inicial'
 ,'Final Date'=>'Data Final'
+,'Verification Code'=>'Código de Verificacão'
+,'Map'=>'Mapa'
+,'Body'=>'Corpo'
 ); ?>

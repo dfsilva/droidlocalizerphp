@@ -34,6 +34,9 @@ class LocalizacaoController extends Controller
 	}
 	*/
 
+	/**
+	 *Acao para inserir uma localizacao 
+	 */
 	public function actionInserir(){
 		header('Content-type: application/json');
 		try {
@@ -51,7 +54,9 @@ class LocalizacaoController extends Controller
 			print '{"success":false, "message":"'.$e->getMessage().'"}';
 		}
 	}
-	
+	/**
+	 * Acao para atualizar uma determinada localizacao.
+	 */	
 	public function actionAtualizar(){
 		header('Content-type: application/json');
 		try {
@@ -70,6 +75,9 @@ class LocalizacaoController extends Controller
 		}
 	}
 
+	/**
+	 * Acao para obter a ultima posicao para um determinado usuario
+	 */
 	public function actionLastPosition(){
 		header('Content-type: application/json');
 		try {
@@ -84,6 +92,9 @@ class LocalizacaoController extends Controller
 		}
 	}
 
+	/**
+	 * Acao para buscar os valores do mapa.
+	 */
 	public function actionBuscarMapa(){
 		header('Content-type: application/json');
 		try {

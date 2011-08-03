@@ -27,8 +27,8 @@ class MapForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'initialDate'=>'Initial Date',
-			'finalDate'=>'Final Date'
+			'initialDate' => Yii::t('mess', 'Initial Date'),
+			'finalDate' => Yii::t('mess', 'Final Date'),
 			);
 	}
 }

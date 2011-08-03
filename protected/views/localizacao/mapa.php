@@ -65,6 +65,7 @@
   }
 </script>
 	<h2><?php echo Yii::t('mess','Map')?></h2>
+	<div>
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'mapForm',
 			'enableClientValidation'=>true,
@@ -112,9 +113,8 @@
 			 ?>
         </div>
 	<?php $this->endWidget(); ?>
-
-	<div id="map_canvas" style="width:90%; height:400px; margin-left: 45px;"></div>
-	
+	</div>
+	<div id="map_canvas" style="width:90%; height:400px; margin-left: 45px; border: 1px solid; margin-top: 40px;"></div>
 	<script type="text/javascript">
 		criarMapa();
 	</script>

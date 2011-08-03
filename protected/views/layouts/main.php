@@ -101,7 +101,12 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/js/jquery.loadmask.js', CClientS
             <article class="col1 pad_left1">
 			</article>
 			<article class="width_100perc">
-			    <?php echo $content; ?>
+			    <!-- ?php echo $content; ?-->
+			    <div class="container">
+					<div id="content">
+						<?php echo $content; ?>
+					</div>
+				</div>
 			</article>
 		</div>
 	</section>
