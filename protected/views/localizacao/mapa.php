@@ -76,7 +76,7 @@
 		));?>
 
 		<?php echo $form->errorSummary($model); ?>
-		
+		 
 		<div style="float: right; display: inline;">
 			<div class="form_2" style="display: inline-block; height: 34px; padding-top: 6px; padding-right: 20px;">
 				<?php echo $form->labelEx($model,'initialDate'); ?>
