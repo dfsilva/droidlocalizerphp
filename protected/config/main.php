@@ -51,7 +51,7 @@ return array(
 		),
 		
 		// desenv
-/*
+
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=android_localizer_db',
 			'emulatePrepare' => true,
@@ -59,9 +59,9 @@ return array(
 			'password' => '',
 			'charset' => 'utf8',
 		),
-		*/
+		
 		//producao
-
+/*
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=diegosil_localizer',
 			'emulatePrepare' => true,
@@ -69,7 +69,7 @@ return array(
 			'password' => 'SD@mtzadM',
 			'charset' => 'utf8',
 		),
-		
+		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',

@@ -99,6 +99,10 @@ class Localizacao extends CActiveRecord
 	public function findByIdUsuarioAndDate($idUsuario, $dataInicial, $dataFinal){
 		$dataIni = Yii::app()->dateFormatter->format('yyyy-MM-dd', CDateTimeParser::parse($dataInicial,'dd/MM/yyyy'));
 		$dataFin = Yii::app()->dateFormatter->format('yyyy-MM-dd', CDateTimeParser::parse($dataFinal,'dd/MM/yyyy'));
+		
+		$dataIni = $dataIni.' 00:00:00';
+		$dataFin = $dataFin.'23:59:59';
+		
 		return Yii::app()->db->createCommand()
 		->select('longitude, latitude, hora')
 		->from($this->tableName())

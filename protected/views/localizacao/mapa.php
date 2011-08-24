@@ -107,9 +107,9 @@
 	                   Yii::t('mess','Send'),
 	                   Yii::app()->createUrl("localizacao/buscarMapa"),
 	                   array("success" => "posConsulta","beforeSend"=>"preConsulta","type"=>"POST"),
-	                   array("href" => Yii::app()->createUrl("site/buscarMapa"),
-	                   	"class" =>"button_form") 
-	                   );
+	                   array("href" => Yii::app()->createUrl("site/buscarMapa"),"class" =>"button_form", 
+	                   "id"=>"btnConsultar")
+			 		);
 			 ?>
         </div>
 	<?php $this->endWidget(); ?>
@@ -117,4 +117,5 @@
 	<div id="map_canvas" style="width:90%; height:400px; margin-left: 45px; border: 1px solid; margin-top: 40px;"></div>
 	<script type="text/javascript">
 		criarMapa();
+		jQuery("#btnConsultar").click();
 	</script>
