@@ -53,7 +53,7 @@ return array(
 		// desenv
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=android_localizer_db',
+			'connectionString' => 'mysql:host=localhost;dbname=diegosil_localizer',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
