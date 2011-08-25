@@ -1,7 +1,6 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . '/js/markerwithlabel.js'?>"></script>
 <script type="text/javascript">
-  
   function criarMapa(){
 	  var c = new google.maps.LatLng(-15.707663,-48.039552);
 		 var myOptions = {
@@ -10,6 +9,11 @@
 			      mapTypeId: google.maps.MapTypeId.ROADMAP
 			    };
 	 var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	 setTimeout("autoBusca()",500);
+  }
+
+  function autoBusca(){
+	  jQuery("#btnConsultar").click();
   }
 
   function popularMapa(coordenadas) {
@@ -117,5 +121,4 @@
 	<div id="map_canvas" style="width:90%; height:400px; margin-left: 45px; border: 1px solid; margin-top: 40px;"></div>
 	<script type="text/javascript">
 		criarMapa();
-		jQuery("#btnConsultar").click();
 	</script>
